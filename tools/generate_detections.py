@@ -74,7 +74,7 @@ class ImageEncoder(object):
                  output_name="features"):
 
         # set GPU options
-        config = tf.ConfigProto()
+        config = tf.compat.v1.ConfigProto()
         config.gpu_options.allow_growth = True
 
         self.session = tf.Session(config=config)
