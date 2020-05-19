@@ -4,7 +4,7 @@ import errno
 import argparse
 import numpy as np
 import cv2
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 
 def _run_in_batches(f, data_dict, out, batch_size):
@@ -74,10 +74,10 @@ class ImageEncoder(object):
                  output_name="features"):
 
         # set GPU options
-        config = tf.compat.v1.ConfigProto()
+        config = tf.ConfigProto()
         config.gpu_options.allow_growth = True
 
-        self.session = tf.compat.v1.Session(config=config)
+        self.session = tf.Session(config=config)
 
         with tf.gfile.GFile(checkpoint_filename, "rb") as file_handle:
             graph_def = tf.GraphDef()
