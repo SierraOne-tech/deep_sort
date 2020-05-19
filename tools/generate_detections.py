@@ -77,7 +77,7 @@ class ImageEncoder(object):
         config = tf.compat.v1.ConfigProto()
         config.gpu_options.allow_growth = True
 
-        self.session = tf.Session(config=config)
+        self.session = tf.compat.v1.Session(config=config)
 
         with tf.gfile.GFile(checkpoint_filename, "rb") as file_handle:
             graph_def = tf.GraphDef()
